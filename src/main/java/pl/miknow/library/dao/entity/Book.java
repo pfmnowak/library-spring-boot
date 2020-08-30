@@ -1,12 +1,10 @@
 package pl.miknow.library.dao.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
     @Id
@@ -17,7 +15,7 @@ public class Book {
 
     private String isbn;
 
-    private LocalDate year;
+    private LocalDate publicationDate;
 
     private int numberOfPages;
 
@@ -30,11 +28,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String title, String isbn, LocalDate year, int numberOfPages, String genre, String author, String publishingHouse) {
+    public Book(Long id, String title, String isbn, LocalDate publicationDate, int numberOfPages, String genre, String author, String publishingHouse) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
-        this.year = year;
+        this.publicationDate = publicationDate;
         this.numberOfPages = numberOfPages;
         this.genre = genre;
         this.author = author;
@@ -66,11 +64,11 @@ public class Book {
     }
 
     public LocalDate getYear() {
-        return year;
+        return publicationDate;
     }
 
     public void setYear(LocalDate year) {
-        this.year = year;
+        this.publicationDate = year;
     }
 
     public int getNumberOfPages() {
