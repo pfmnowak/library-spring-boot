@@ -1,4 +1,4 @@
-package pl.miknow.library.dao.entity;
+package pl.miknow.library.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;

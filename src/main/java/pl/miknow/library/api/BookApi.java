@@ -3,7 +3,7 @@ package pl.miknow.library.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.miknow.library.Manager.BookManager;
-import pl.miknow.library.dao.entity.Book;
+import pl.miknow.library.model.Book;
 
 import java.util.Optional;
 
