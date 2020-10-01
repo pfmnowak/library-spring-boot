@@ -16,27 +16,27 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private final String username;
     private final String name;
     private final String lastName;
     private final String address;
-    private final String email;
     private final String password;
-    private final int phoneNumber;
+    private final String phoneNumber;
 
     private User() {
+        this.username = null;
         this.name = null;
         this.lastName = null;
         this.address = null;
-        this.email = null;
         this.password = null;
-        this.phoneNumber = 0;
+        this.phoneNumber = null;
     }
 
-    public User(String name, String lastName, String address, String email, String password, int phoneNumber) {
+    public User(String username, String name, String lastName, String address, String password, String phoneNumber) {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
     }
@@ -53,7 +53,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     public static long getSerialVersionUID() {
@@ -76,11 +76,7 @@ public class User implements UserDetails {
         return address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library Application</title>
+<!--    <link rel="stylesheet" th:href="@{/styles.css}"/>-->
+</head>
+<body>
+    <h1>Registration</h1>
+
+    <form method="POST" th:action="@{/register}" id="registerForm">
+        <label for="name">Name: </label>
+        <input type="text" name="name">
+        <br>
+        <label for="lastname">Last Name: </label>
+        <input type="text" name="lastname">
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" name="password">
+        <br>
+        <label for="address">Address: </label>
+        <input type="text" name="address">
+        <br>
+        <label for="email">Email: </label>
+        <input type="email" name="email">
+        <br>
+        <label for="phone">Phone nr: </label>
+        <input type="text" name="phone">
+        <br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
