@@ -1,4 +1,4 @@
-package pl.miknow.library;
+package pl.miknow.library.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

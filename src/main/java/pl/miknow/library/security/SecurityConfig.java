@@ -33,13 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/design", "/orders").access("hasRole('USER')")
+                .antMatchers("/books", "/console").access("hasRole('ROLE_USER')")
                 .antMatchers("/", "/**").access("permitAll")
-                .antMatchers("/h2-console/**").permitAll()
+//                .antMatchers("/console/**").access("permitAll")
+//                .antMatchers("/console/**").permitAll()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
+                .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .and()
-                .logout().logoutSuccessUrl("/")
-        ;
+                .logout().logoutSuccessUrl("/");
+        // Enabling H2 Console with Spring Security
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
