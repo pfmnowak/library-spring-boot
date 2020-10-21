@@ -33,12 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/books", "/console").access("hasRole('ROLE_USER')")
+                .antMatchers("/books", "/user","/console").access("hasRole('ROLE_USER')")
                 .antMatchers("/", "/**").access("permitAll")
 //                .antMatchers("/console/**").access("permitAll")
 //                .antMatchers("/console/**").permitAll()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/")
+                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
                 .and()
                 .logout().logoutSuccessUrl("/");
         // Enabling H2 Console with Spring Security
