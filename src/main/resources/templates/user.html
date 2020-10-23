@@ -12,6 +12,9 @@
         <h3>User Info</h3>
     </header>
     <article>
+        <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout">
+        </form>
         <div class="container">
             <div th:each="book: ${books}">
                 <p th:text="${book.title}">title</p>
