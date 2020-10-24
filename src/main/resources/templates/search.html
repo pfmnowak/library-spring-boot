@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Library User</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<main>
+    <header>
+        <a href="/"><h2>Library</h2></a>
+        <h3>Search</h3>
+    </header>
+    <article>
+        <form method="POST" th:action="@{/logout}">
+            <input type="submit" value="Logout">
+        </form>
+        <div class="container">
+            <p>Dear User, welcome to the library. More information will be provided soon...</p>
+            <h3>Search here</h3>
+            <a href="/books"><p>List of Books</p></a>
+            <a href="/user"><p>User profile</p></a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

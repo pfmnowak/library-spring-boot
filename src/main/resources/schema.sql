@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS books;
+--DROP TABLE IF EXISTS users;
 create table if not exists books (
 id bigint not null auto_increment PRIMARY KEY,
 title varchar(50) not null,

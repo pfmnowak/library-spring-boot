@@ -2,7 +2,7 @@ package pl.miknow.library.Manager;
 
 import org.springframework.stereotype.Service;
 import pl.miknow.library.dao.BookRepository;
-import pl.miknow.library.dao.entity.Book;
+import pl.miknow.library.model.Book;
 
 import java.util.Optional;
 

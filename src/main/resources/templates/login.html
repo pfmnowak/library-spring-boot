@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Application</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="/"><h2>Library</h2></a>
+            <h3>Login Page</h3>
+        </header>
+        <article>
+            <div class="container">
+                <form method="POST" th:action="@{/login}" id="loginForm">
+                    <label for="username">Login: </label>
+                    <input type="text" name="username" id="username">
+                    <br>
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="password">
+                    <br>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
