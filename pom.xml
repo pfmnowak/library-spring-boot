@@ -12,7 +12,7 @@
 	<artifactId>library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>library</name>
-	<description>Library Spring Boot project for learning purposes</description>
+	<description>Library Application</description>
 
 	<properties>
 		<java.version>13</java.version>
