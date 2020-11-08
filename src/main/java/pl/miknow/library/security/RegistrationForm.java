@@ -4,26 +4,31 @@ import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.miknow.library.model.User;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @Data
 public class RegistrationForm {
+    // This is our User DTO Object (Data Transfer Object)
+    @NotBlank(message = "Field cannot be empty.")
     private String email;
+    @NotBlank(message = "Field cannot be empty.")
+    @Size(min=5, message = "Min size is 5.")
     private String name;
+    @NotBlank(message = "Field cannot be empty.")
     private String lastName;
+    @NotBlank(message = "Field cannot be empty.")
     private String address;
+    @NotBlank(message = "Field cannot be empty.")
     private String password;
+    @NotBlank(message = "Field cannot be empty.")
     private String phoneNumber;
+
+    public RegistrationForm() {
+    }
 
     public User toUser(PasswordEncoder passwordEncoder) {
         return new User(email, name, lastName, address, passwordEncoder.encode(password), phoneNumber);
-    }
-
-    public RegistrationForm(String email, String name, String lastName, String address, String password, String phoneNumber) {
-        this.email = email;
-        this.name = name;
-        this.lastName = lastName;
-        this.address = address;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {

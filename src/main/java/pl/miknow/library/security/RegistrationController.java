@@ -5,10 +5,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.miknow.library.dao.UserRepository;
+import pl.miknow.library.web.error.UserAlreadyExistException;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
@@ -23,15 +29,23 @@ public class RegistrationController {
     }
 
     @GetMapping
-    public String registerForm() {
+    public String registerForm(Model model) {
         if (isAuthenticated()) {
             return "redirect:search";
         }
+        model.addAttribute("user", new RegistrationForm());
         return "registration";
     }
 
     @PostMapping
-    public String processRegistration(RegistrationForm form) {
+    public String processRegistration(@ModelAttribute("user") @Valid RegistrationForm form, Errors errors) {
+        if (errors.hasErrors()) {
+            return "registration";
+        }
+        if (emailExist(form.getEmail())) {
+            throw new UserAlreadyExistException(
+                    "There is already an account with that email address.");
+        }
         userRepo.save(form.toUser(passwordEncoder));
         return "redirect:/login";
     }
@@ -42,5 +56,9 @@ public class RegistrationController {
             return false;
         }
         return authentication.isAuthenticated();
+    }
+
+    private boolean emailExist(String email) {
+        return userRepo.findByUsername(email) != null;
     }
 }
