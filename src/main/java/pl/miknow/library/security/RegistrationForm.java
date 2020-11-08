@@ -5,32 +5,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.miknow.library.model.User;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 public class RegistrationForm {
     // This is our User DTO Object (Data Transfer Object)
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Field cannot be empty.")
     private String email;
-    @NotNull
-    @NotEmpty
-    @NotBlank
-    @Size(min=5, message = "Ty chuju!")
+    @NotBlank(message = "Field cannot be empty.")
+    @Size(min=5, message = "Min size is 5.")
     private String name;
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Field cannot be empty.")
     private String lastName;
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Field cannot be empty.")
     private String address;
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Field cannot be empty.")
     private String password;
-    @NotNull
-    @NotEmpty
+    @NotBlank(message = "Field cannot be empty.")
     private String phoneNumber;
 
     public RegistrationForm() {

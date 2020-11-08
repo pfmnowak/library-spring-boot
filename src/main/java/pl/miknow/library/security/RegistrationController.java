@@ -12,14 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.miknow.library.dao.UserRepository;
-import pl.miknow.library.model.User;
 import pl.miknow.library.web.error.UserAlreadyExistException;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
-//public class RegistrationController implements IRegistrationController {
 public class RegistrationController {
 
     private UserRepository userRepo;
@@ -39,13 +37,7 @@ public class RegistrationController {
         return "registration";
     }
 
-//    @ModelAttribute(name="user")
-//    public RegistrationForm form() {
-//        return new RegistrationForm();
-//    }
-
     @PostMapping
-//    @Override
     public String processRegistration(@ModelAttribute("user") @Valid RegistrationForm form, Errors errors) {
         if (errors.hasErrors()) {
             return "registration";
