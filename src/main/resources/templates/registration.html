@@ -13,9 +13,22 @@
         </header>
         <article>
             <div class="container">
-                <form method="POST" th:action="@{/register}" id="registerForm">
+                <form method="POST" th:action="@{/register}" th:object="${user}" id="registerForm">
+
                     <label for="name">Name: </label>
-                    <input type="text" name="name">
+<!--                    <input type="text" name="name">-->
+                    <input type="text" th:field="*{name}">
+                    <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Błąd nazwiska.</span>
+                    <p th:each="error: ${#fields.errors('name')}"
+                       th:text="${error}">Validation error</p>
+                    <br>
+
+<!--                    Fix validation-->
+<!--                    <label th:text="#{label.user.name}">Name: </label>-->
+<!--                    <input th:field="*{name}"/>-->
+<!--                    <p th:each="error: ${#fields.errors('name')}"-->
+<!--                       th:text="${error}">Validation error</p>-->
+
                     <br>
                     <label for="lastName">Last Name: </label>
                     <input type="text" name="lastName">
