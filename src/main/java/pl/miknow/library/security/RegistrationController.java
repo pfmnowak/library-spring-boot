@@ -42,10 +42,6 @@ public class RegistrationController {
         if (errors.hasErrors()) {
             return "registration";
         }
-        if (emailExist(form.getEmail())) {
-            throw new UserAlreadyExistException(
-                    "There is already an account with that email address.");
-        }
         userRepo.save(form.toUser(passwordEncoder));
         return "redirect:/login";
     }
@@ -58,7 +54,4 @@ public class RegistrationController {
         return authentication.isAuthenticated();
     }
 
-    private boolean emailExist(String email) {
-        return userRepo.findByUsername(email) != null;
-    }
 }
